@@ -4,16 +4,16 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { CreateCompanyDto } from './dtos/create-company.dto';
 import { UpdateCompanyDto } from './dtos/update-company.dto';
-// import { Company } from './interfaces/company.interface';
-import { IPatient } from './models/Patient';
+import { Company } from './interfaces/company.interface';
+// import { IPatient } from './models/Patient';
 
 @Injectable()
 export class AppService {
   constructor(
-    @InjectModel('Company') private readonly companyModel: Model<IPatient>,
+    @InjectModel('Company') private readonly companyModel: Model<Company>,
   ) {}
 
-  async createCompany(createCompanyDto: CreateCompanyDto): Promise<IPatient> {
+  async createCompany(createCompanyDto: CreateCompanyDto): Promise<Company> {
     const companySaved = await new this.companyModel(createCompanyDto).save();
 
     if (!companySaved) {
@@ -22,15 +22,15 @@ export class AppService {
     return companySaved;
   }
 
-  async findCompanyByName(name: string): Promise<IPatient> {
+  async findCompanyByName(name: string): Promise<Company> {
     return await this.companyModel.findOne({ name });
   }
 
-  async findCompanyByIdOrThrow(_id: string): Promise<IPatient> {
+  async findCompanyByIdOrThrow(_id: string): Promise<Company> {
     return await this.companyModel.findById({ _id });
   }
 
-  async findAllCompanies(): Promise<Array<IPatient>> {
+  async findAllCompanies(): Promise<Array<Company>> {
     return await this.companyModel.find();
   }
 
