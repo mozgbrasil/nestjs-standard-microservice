@@ -38,6 +38,7 @@ mensagem unacked aqui irá travar o seu microserviço e comprometer a aplicaçã
 6 – Utilize o TypeORM para gerenciar as operações com o banco de dados.
 
 👕️ Utilizando Mongoose para operação com banco de dados não relacional
+
 ℹ️ @TODO: Se for necessário para banco relacional
 
 👾️⚙️
