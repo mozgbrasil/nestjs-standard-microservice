@@ -30,7 +30,7 @@ dados, ajuste a velocidade de consumo dessa fila para 1 por vez e envie um ack s
 inserção do log no banco. Muito cuidado no tratamento de erros no consumo dessa fila, pois uma
 mensagem unacked aqui irá travar o seu microserviço e comprometer a aplicação.
 
-✅️ Feito o consumo da fila no RabbitMQ
+👕️ Feito o consumo da fila no RabbitMQ
 
 ℹ️ @TODO: Por motivos de versão do Mongoose, estou com dificuldade na inserção do registro, devo buscar ajuda
 
@@ -38,7 +38,7 @@ mensagem unacked aqui irá travar o seu microserviço e comprometer a aplicaçã
 
 ℹ️ @TODO:
 
-✅️ ℹ️ 🛑️
+👕️ ℹ️ 🛑️
 
 👾️⚙️
 
