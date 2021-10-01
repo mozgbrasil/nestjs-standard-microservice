@@ -34,6 +34,9 @@ mensagem unacked aqui irá travar o seu microserviço e comprometer a aplicaçã
 
 ℹ️ @TODO: Por motivos de versão do Mongoose, estou com dificuldade na inserção do registro, devo buscar ajuda
 
+- https://customer.cloudamqp.com/
+- https://cloud.mongodb.com/
+
 6 – Utilize o TypeORM para gerenciar as operações com o banco de dados.
 
 ℹ️ @TODO:
