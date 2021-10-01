@@ -32,14 +32,13 @@ mensagem unacked aqui irá travar o seu microserviço e comprometer a aplicaçã
 
 👕️ Feito o consumo da fila no RabbitMQ
 
-ℹ️ @TODO: Por motivos de versão do Mongoose, estou com dificuldade na inserção do registro, devo buscar ajuda
-
 - https://customer.cloudamqp.com/
 - https://cloud.mongodb.com/
 
 6 – Utilize o TypeORM para gerenciar as operações com o banco de dados.
 
-ℹ️ @TODO:
+👕️ Utilizando Mongoose para operação com banco de dados não relacional
+ℹ️ @TODO: Se for necessário para banco relacional
 
 👾️⚙️
 
