@@ -1,4 +1,4 @@
-[checkmark]: https://raw.githubusercontent.com/mozgbrasil/mozgbrasil.github.io/master/assets/images/logos/logo_32_32.png "MOZG"
+[checkmark]: https://raw.githubusercontent.com/mozgbrasil/mozgbrasil.github.io/master/assets/images/logos/logo_32_32.png 'MOZG'
 
 ![valid XHTML][checkmark]
 
@@ -30,9 +30,13 @@ dados, ajuste a velocidade de consumo dessa fila para 1 por vez e envie um ack s
 inserção do log no banco. Muito cuidado no tratamento de erros no consumo dessa fila, pois uma
 mensagem unacked aqui irá travar o seu microserviço e comprometer a aplicação.
 
-🛑️
+✅️ Feito o consumo da fila no RabbitMQ
+
+ℹ️ @TODO: Por motivos de versão do Mongoose, estou com dificuldade na inserção do registro, devo buscar ajuda
 
 6 – Utilize o TypeORM para gerenciar as operações com o banco de dados.
+
+ℹ️ @TODO:
 
 ✅️ ℹ️ 🛑️
 
