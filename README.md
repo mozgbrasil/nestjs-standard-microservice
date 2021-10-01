@@ -38,8 +38,6 @@ mensagem unacked aqui irá travar o seu microserviço e comprometer a aplicaçã
 
 ℹ️ @TODO:
 
-👕️ ℹ️ 🛑️
-
 👾️⚙️
 
 ## Contribuição
