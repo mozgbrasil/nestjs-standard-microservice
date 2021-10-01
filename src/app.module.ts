@@ -8,13 +8,13 @@ import { CompanySchema } from "./interfaces/company.schema";
 @Module({
   imports: [
     ConfigModule.forRoot({ isGlobal: true }),
-    MongooseModule.forRoot(process.env.MONGODB_URI_LOCAL, {
+    MongooseModule.forRoot(process.env.MONGODB_URI, {
       useNewUrlParser: true,
       // useCreateIndex: true,
       useUnifiedTopology: true,
       // useFindAndModify: false,
     }),
-    MongooseModule.forFeature([{ name: "Company", schema: CompanySchema }]),
+    MongooseModule.forFeature([{ name: 'Company', schema: CompanySchema }]),
   ],
   controllers: [AppController],
   providers: [AppService],
