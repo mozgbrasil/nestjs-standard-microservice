@@ -1,6 +1,6 @@
 import { IsNotEmpty } from 'class-validator';
 
-export class UpdateCompanyDto {
+export class CreateRmqchannelDto {
   @IsNotEmpty()
   readonly url: string;
 

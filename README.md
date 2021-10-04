@@ -16,6 +16,8 @@ $ nest new nestjs-standard-microservice
 
 $ yarn add @nestjs/config @nestjs/microservices class-validator @nestjs/mongoose mongoose
 
+$ nest g resource rmqchannel
+
 ```
 
 - https://courses.nestjs.com/

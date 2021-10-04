@@ -12,4 +12,4 @@ const jsonSchema = {
   timestamp: { type: String, required: false },
 };
 
-export const CompanySchema = new mongoose.Schema(jsonSchema);
+export const RmqchannelSchema = new mongoose.Schema(jsonSchema);

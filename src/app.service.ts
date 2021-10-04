@@ -2,42 +2,42 @@ import { Injectable } from '@nestjs/common';
 import { RpcException } from '@nestjs/microservices';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { CreateCompanyDto } from './dtos/create-company.dto';
-import { UpdateCompanyDto } from './dtos/update-company.dto';
-import { Company } from './interfaces/company.interface';
-// import { IPatient } from './models/Patient';
-
+import { CreateRmqchannelDto } from './rmqchannel/dto/create-rmqchannel.dto';
+import { UpdateRmqchannelDto } from './rmqchannel/dto/update-rmqchannel.dto';
+import { Rmqchannel } from './rmqchannel/interfaces/rmqchannel.interface';
 @Injectable()
 export class AppService {
   constructor(
-    @InjectModel('Company') private readonly companyModel: Model<Company>,
+    @InjectModel('Rmqchannel') private readonly myModel: Model<Rmqchannel>,
   ) {}
 
-  async createCompany(createCompanyDto: CreateCompanyDto): Promise<Company> {
-    const companySaved = await new this.companyModel(createCompanyDto).save();
+  async createRmqchannel(
+    createRmqchannelDto: CreateRmqchannelDto,
+  ): Promise<Rmqchannel> {
+    const saved = await new this.myModel(createRmqchannelDto).save();
 
-    if (!companySaved) {
-      throw new RpcException('Problem to create a company');
+    if (!saved) {
+      throw new RpcException('Problem to create a record');
     }
-    return companySaved;
+    return saved;
   }
 
-  async findCompanyByName(name: string): Promise<Company> {
-    return await this.companyModel.findOne({ name });
+  async findRmqchannelByName(name: string): Promise<Rmqchannel> {
+    return await this.myModel.findOne({ name });
   }
 
-  async findCompanyByIdOrThrow(_id: string): Promise<Company> {
-    return await this.companyModel.findById({ _id });
+  async findRmqchannelByIdOrThrow(_id: string): Promise<Rmqchannel> {
+    return await this.myModel.findById({ _id });
   }
 
-  async findAllCompanies(): Promise<Array<Company>> {
-    return await this.companyModel.find();
+  async findAllCompanies(): Promise<Array<Rmqchannel>> {
+    return await this.myModel.find();
   }
 
-  async updateCompany(
+  async updateRmqchannel(
     _id: string,
-    updateCompanyDto: UpdateCompanyDto,
+    updateRmqchannelDto: UpdateRmqchannelDto,
   ): Promise<void> {
-    await this.companyModel.findByIdAndUpdate(_id, updateCompanyDto);
+    await this.myModel.findByIdAndUpdate(_id, updateRmqchannelDto);
   }
 }

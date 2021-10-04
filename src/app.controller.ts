@@ -7,8 +7,7 @@ import {
   RmqContext,
 } from '@nestjs/microservices';
 import { AppService } from './app.service';
-import { Company } from './interfaces/company.interface';
-// import { IPatient } from './models/Patient';
+import { Rmqchannel } from './rmqchannel/interfaces/rmqchannel.interface';
 
 @Controller()
 export class AppController {
@@ -27,26 +26,26 @@ export class AppController {
     console.log(`Pattern: ${context.getPattern()}`);
   }
 
-  @EventPattern('create-company')
-  async createCompany(
-    @Payload() company: Company,
+  @EventPattern('create-rmq-channel')
+  async createRmqchannel(
+    @Payload() payload: Rmqchannel,
     @Ctx() rmqContext: RmqContext,
   ) {
     const channel = rmqContext.getChannelRef();
     const originalMessage = rmqContext.getMessage();
 
     try {
-      await this.appService.createCompany(company);
+      await this.appService.createRmqchannel(payload);
       await channel.ack(originalMessage);
     } catch (exception) {
       this.logger.error(
-        `error create-company: ${JSON.stringify(exception.message)}`,
+        `exception->createRmqchannel: ${JSON.stringify(exception.message)}`,
       );
     }
   }
 
-  @MessagePattern('find-all-companies')
-  async findCompanyById(@Ctx() rmqContext: RmqContext) {
+  @MessagePattern('find-rmqchannel-by-id')
+  async findRmqchannelById(@Ctx() rmqContext: RmqContext) {
     const channel = rmqContext.getChannelRef();
     const originalMessage = rmqContext.getMessage();
 
@@ -54,15 +53,15 @@ export class AppController {
       return await this.appService.findAllCompanies();
     } catch (exception) {
       this.logger.error(
-        `error find-all-companies: ${JSON.stringify(exception.message)}`,
+        `exception->findRmqchannelById: ${JSON.stringify(exception.message)}`,
       );
     } finally {
       await channel.ack(originalMessage);
     }
   }
 
-  @MessagePattern('find-company-by-id')
-  async findAllCompanies(
+  @MessagePattern('find-rmqchannel-all')
+  async findRmqchannelAll(
     @Payload() _id: string,
     @Ctx() rmqContext: RmqContext,
   ) {
@@ -70,18 +69,18 @@ export class AppController {
     const originalMessage = rmqContext.getMessage();
 
     try {
-      return await this.appService.findCompanyByIdOrThrow(_id);
+      return await this.appService.findRmqchannelByIdOrThrow(_id);
     } catch (exception) {
       this.logger.error(
-        `error find-company-by-id: ${JSON.stringify(exception.message)}`,
+        `exception->findRmqchannelAll: ${JSON.stringify(exception.message)}`,
       );
     } finally {
       await channel.ack(originalMessage);
     }
   }
 
-  @MessagePattern('find-company-by-name')
-  async findCompanyByName(
+  @MessagePattern('find-rmqchannel-by-name')
+  async findRmqchannelByName(
     @Payload() name: string,
     @Ctx() rmqContext: RmqContext,
   ) {
@@ -89,27 +88,27 @@ export class AppController {
     const originalMessage = rmqContext.getMessage();
 
     try {
-      return await this.appService.findCompanyByName(name);
+      return await this.appService.findRmqchannelByName(name);
     } catch (exception) {
       this.logger.error(
-        `error find-company-by-name: ${JSON.stringify(exception.message)}`,
+        `exception->findRmqchannelByName: ${JSON.stringify(exception.message)}`,
       );
     } finally {
       await channel.ack(originalMessage);
     }
   }
 
-  @EventPattern('update-company')
-  async updateCompany(@Payload() data: any, @Ctx() rmqContext: RmqContext) {
+  @EventPattern('update-rmqchannel')
+  async updateRmqchannel(@Payload() data: any, @Ctx() rmqContext: RmqContext) {
     const channel = rmqContext.getChannelRef();
     const originalMessage = rmqContext.getMessage();
 
     try {
-      await this.appService.updateCompany(data.id, data.company);
+      await this.appService.updateRmqchannel(data.id, data.company);
       await channel.ack(originalMessage);
     } catch (exception) {
       this.logger.error(
-        `error update-company: ${JSON.stringify(exception.message)}`,
+        `exception->updateRmqchannel: ${JSON.stringify(exception.message)}`,
       );
     }
   }

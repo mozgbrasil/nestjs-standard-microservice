@@ -1,9 +1,10 @@
-import { Module } from "@nestjs/common";
-import { ConfigModule } from "@nestjs/config";
-import { MongooseModule } from "@nestjs/mongoose";
-import { AppController } from "./app.controller";
-import { AppService } from "./app.service";
-import { CompanySchema } from "./interfaces/company.schema";
+import { Module } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
+import { MongooseModule } from '@nestjs/mongoose';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
+import { RmqchannelSchema } from './rmqchannel/interfaces/rmqchannel.schema';
+// import { RmqchannelModule } from './rmqchannel/rmqchannel.module';
 
 @Module({
   imports: [
@@ -14,7 +15,10 @@ import { CompanySchema } from "./interfaces/company.schema";
       useUnifiedTopology: true,
       // useFindAndModify: false,
     }),
-    MongooseModule.forFeature([{ name: 'Company', schema: CompanySchema }]),
+    MongooseModule.forFeature([
+      { name: 'Rmqchannel', schema: RmqchannelSchema },
+    ]),
+    // RmqchannelModule,
   ],
   controllers: [AppController],
   providers: [AppService],

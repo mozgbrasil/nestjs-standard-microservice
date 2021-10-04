@@ -1,4 +1,6 @@
-export class FindCompanyDto {
+import { Document } from 'mongoose';
+
+export interface Rmqchannel extends Document {
   readonly url: string;
 
   readonly body: string;
