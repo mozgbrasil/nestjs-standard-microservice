@@ -4,7 +4,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { RmqchannelSchema } from './rmqchannel/interfaces/rmqchannel.schema';
-// import { RmqchannelModule } from './rmqchannel/rmqchannel.module';
+import { RmqchannelModule } from './rmqchannel/rmqchannel.module';
 
 @Module({
   imports: [
@@ -18,7 +18,7 @@ import { RmqchannelSchema } from './rmqchannel/interfaces/rmqchannel.schema';
     MongooseModule.forFeature([
       { name: 'Rmqchannel', schema: RmqchannelSchema },
     ]),
-    // RmqchannelModule,
+    RmqchannelModule,
   ],
   controllers: [AppController],
   providers: [AppService],

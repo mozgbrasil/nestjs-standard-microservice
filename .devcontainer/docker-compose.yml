@@ -42,13 +42,14 @@ services:
     #  MONGO_INITDB_DATABASE: your-database-here
   mongo-express:
     image: mongo-express
-    network_mode: "host"
+    network_mode: 'host'
     restart: unless-stopped
-    # @TODO: Error, Not Work
     ports:
       - 8081:8081
     depends_on:
       - mongodb
+    environment:
+      ME_CONFIG_MONGODB_URL: ${ME_CONFIG_MONGODB_URL:-mongodb://localhost:27017/mjv?ssl=false}
   postgres:
     image: "postgres:9.6"
     network_mode: "host"
@@ -75,7 +76,7 @@ services:
     ports:
       - "15432:15432"
     environment:
-      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-admin}
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-admin@gmail.com}
       PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
     volumes:
       - "volume-pgadmin:/var/lib/pgadmin"
