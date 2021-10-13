@@ -15,28 +15,6 @@ export class RmqchannelService {
     private readonly rmqchannelMyModel: Model<Rmqchannel>,
   ) {}
 
-  create(createRmqchannelDto: CreateRmqchannelDto) {
-    return 'This action adds a new rmqchannel';
-  }
-
-  findAll() {
-    return `This action returns all rmqchannel`;
-  }
-
-  findOne(id: number) {
-    return `This action returns a #${id} rmqchannel`;
-  }
-
-  update(id: number, updateRmqchannelDto: UpdateRmqchannelDto) {
-    return `This action updates a #${id} rmqchannel`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} rmqchannel`;
-  }
-
-  //
-
   async preCreateRmqchannel(
     @Payload() payload: Rmqchannel,
     @Ctx() rmqContext: RmqContext,

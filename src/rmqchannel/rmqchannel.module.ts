@@ -3,7 +3,6 @@ import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { RmqchannelSchema } from './interfaces/rmqchannel.schema';
 import { RmqchannelService } from './rmqchannel.service';
-import { RmqchannelController } from './rmqchannel.controller';
 
 @Module({
   imports: [
@@ -12,7 +11,7 @@ import { RmqchannelController } from './rmqchannel.controller';
       { name: 'Rmqchannel', schema: RmqchannelSchema },
     ]),
   ],
-  controllers: [RmqchannelController],
+  controllers: [],
   providers: [RmqchannelService],
   exports: [RmqchannelService],
 })
