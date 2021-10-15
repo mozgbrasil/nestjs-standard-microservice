@@ -17,6 +17,11 @@ export class AppController {
     private readonly rmqChannelService: RmqchannelService,
   ) {}
 
+  @MessagePattern({ cmd: 'hello' })
+  hello(input?: string): string {
+    return `Hello, ${input || 'there'}!`;
+  }
+
   @EventPattern('create-rmq-channel')
   async createRmqchannel(
     @Payload() payload: Rmqchannel,
